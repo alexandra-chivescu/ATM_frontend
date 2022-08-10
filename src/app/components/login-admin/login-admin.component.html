@@ -1,0 +1,46 @@
+<div class="img-box">
+  <img alt="atm photo" class="left-side" src='../../../assets/images/login-img.png'>
+</div>
+
+<div class="right-side pull-right">
+  <div class="container-login">
+    <div class="wrap-login">
+      <form class="login-form" [formGroup]="signInForm">
+                <span class="login-logo-img">
+                    <img alt="logo" src='../../../assets/images/bank-logo.png' width="100%">
+                </span>
+        <span class="login-form-title">
+                    ATM Admin
+        </span>
+        <div class="wrap-input">
+          <input
+            class="login-input"
+            type="text"
+            formControlName="username"
+            name="username"
+            #email>
+          <span class="focus-input" data-placeholder="Username"></span>
+        </div>
+        <div class="wrap-input">
+          <input
+            class="login-input"
+            type="password"
+            formControlName="password"
+            name="pass"
+            #password>
+          <span class="focus-input" data-placeholder="Password"></span>
+        </div>
+        <div class="container-login-form-btn">
+          <div class="wrap-login-form-btn">
+            <div class="login-form-bgbtn"></div>
+            <button
+              class="login-form-btn"
+              routerLink="/panel">
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
