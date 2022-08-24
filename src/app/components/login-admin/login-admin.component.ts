@@ -1,36 +1,44 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {LoginAdminService} from "./login-admin.service";
+import {Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AdministratorService} from "../../services/administrator.service";
+import {Administrator} from "../../models/administrator.model";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login-admin',
   templateUrl: './login-admin.component.html',
-  styleUrls: ['./login-admin.component.css'],
-  providers: [LoginAdminService]
+  styleUrls: ['./login-admin.component.css']
 })
 export class LoginAdminComponent implements OnInit {
 
-  @ViewChild('username') usernameInput: ElementRef;
-  @ViewChild('password') passwordInput: ElementRef;
+  public hide = true;
+  public signInForm: FormGroup;
+  public administrator:Administrator;
 
-  signInForm: FormGroup;
-
-  constructor(private loginService: LoginAdminService,
-              private renderer: Renderer2) {
+  constructor(private administratorService : AdministratorService) {
   }
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
-      'username': new FormControl(null),
-      'password': new FormControl(null)
+      'username': new FormControl('', Validators.required ),
+      'password': new FormControl('', [Validators.required, Validators.min(3) ])
     });
+  }
 
-    this.signInForm.valueChanges.subscribe(
-      (value) => {
-        this.loginService.toggleHasValueClass(value['username'], this.renderer, this.usernameInput);
-        this.loginService.toggleHasValueClass(value['password'], this.renderer, this.passwordInput);
+  get usernameInput() { return this.signInForm.get('username'); }
+  get passwordInput() { return this.signInForm.get('password'); }
+
+  public getAdministratorCredentials() : void {
+
+    console.log("Username value: " + this.signInForm.controls['username'].value);
+    console.log("Password value: " + this.signInForm.controls['password'].value);
+    this.administratorService.getAdministratorCredentials(this.administrator).subscribe(
+      (response:Administrator) => {
+        this.administrator = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
     );
   }
-
 }

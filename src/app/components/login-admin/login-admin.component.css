@@ -10,6 +10,7 @@
   height: 100%;
   min-width: 50%;
   margin: auto;
+  padding: 20px;
 }
 
 .right-side {
@@ -25,23 +26,13 @@
   height: 100%;
 }
 
-/*----------------LOGIN FORM------------------*/
-
-input {
-  outline: none;
-  border: none;
+.login-img {
+  display: block;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-/*---------------------------------------------*/
-button {
-  outline: none !important;
-  border: none;
-  background: transparent;
-}
-
-button:hover {
-  cursor: pointer;
-}
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -64,7 +55,6 @@ button:hover {
 
 .wrap-login {
   width: 360px;
-  background: white;
   border-radius: 10px;
   overflow: hidden;
   padding: 77px 55px 33px 55px;
@@ -97,82 +87,9 @@ button:hover {
 /*------------------------------------------------------------------
 [ Input ]*/
 
-.wrap-input {
+.input-field {
   width: 100%;
-  position: relative;
-  border-bottom: 2px solid #adadad;
-  margin-bottom: 18px;
-}
-
-.login-input {
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  color: #352641;
-  line-height: 1.2;
-
-  display: block;
-  width: 100%;
-  height: 45px;
-  background: transparent;
-  padding: 0 5px;
-}
-
-/*---------------------------------------------*/
-.focus-input {
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.focus-input::before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-
-  background: #352641;
-}
-
-.focus-input::after {
-  font-family: Poppins-Regular;
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.2);
-  line-height: 1.2;
-
-  content: attr(data-placeholder);
-  display: block;
-  width: 100%;
-  position: absolute;
-  top: 20px;
-  left: 0px;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-/* making the placeholder go up */
-.login-input:focus + .focus-input::after {
-  top: -15px;
-}
-
-.login-input:focus + .focus-input::before {
-  width: 100%;
-}
-
-.has-val.login-input + .focus-input::after {
-  top: -15px;
-}
-
-.has-val.login-input + .focus-input::before {
-  width: 100%;
+  height: 50%;
 }
 
 /*------------------------------------------------------------------
@@ -188,33 +105,7 @@ button:hover {
   padding-top: 30px;
 }
 
-.wrap-login-form-btn {
-  width: 100%;
-  display: block;
-  position: relative;
-  z-index: 1;
-  border-radius: 25px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.login-form-bgbtn {
-  position: absolute;
-  z-index: -1;
-  width: 300%;
-  height: 100%;
-  background: #005986;
-  top: 0;
-  left: -100%;
-}
-
 .login-form-btn {
-  font-family: Poppins-Medium;
-  font-size: 15px;
-  color: white;
-  line-height: 1.2;
-  text-transform: uppercase;
-
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -225,4 +116,15 @@ button:hover {
   padding: 0 20px;
   width: 100%;
   height: 50px;
+}
+
+.login-button {
+  background-color: #005986;
+  color: white;
+
+  width: 50%;
+  border-radius: 20px;
+  padding: 3px 3px 3px 3px;
+  margin: 30px 0 0 0;
+
 }

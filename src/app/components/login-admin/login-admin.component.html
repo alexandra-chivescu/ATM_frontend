@@ -1,46 +1,36 @@
-<div class="img-box">
-  <img alt="atm photo" class="left-side" src='../../../assets/images/login-img.png'>
+<div class="img-box" class="left-side">
+  <span class="login-img">
+    <img alt="atm-photo" class="left-side" src='../../../assets/images/login-img.png' width="90%">
+  </span>
 </div>
-
-<div class="right-side pull-right">
+<div class="right-side">
   <div class="container-login">
     <div class="wrap-login">
-      <form class="login-form" [formGroup]="signInForm">
                 <span class="login-logo-img">
                     <img alt="logo" src='../../../assets/images/bank-logo.png' width="100%">
                 </span>
         <span class="login-form-title">
                     ATM Admin
         </span>
-        <div class="wrap-input">
-          <input
-            class="login-input"
-            type="text"
-            formControlName="username"
-            name="username"
-            #email>
-          <span class="focus-input" data-placeholder="Username"></span>
-        </div>
-        <div class="wrap-input">
-          <input
-            class="login-input"
-            type="password"
-            formControlName="password"
-            name="pass"
-            #password>
-          <span class="focus-input" data-placeholder="Password"></span>
-        </div>
-        <div class="container-login-form-btn">
-          <div class="wrap-login-form-btn">
-            <div class="login-form-bgbtn"></div>
-            <button
-              class="login-form-btn"
-              routerLink="/panel">
-              Login
-            </button>
-          </div>
-        </div>
+      <form class="login-form" [formGroup]="signInForm">
+           <mat-form-field class="input-field" appearance="fill">
+            <mat-label>Username</mat-label>
+            <input type="username" matInput formControlName="username" required>
+            <mat-error *ngIf="signInForm.hasError('required')">
+              Username is <strong>required</strong>
+            </mat-error>
+            <mat-hint *ngIf="!usernameInput.value">Enter username</mat-hint>
+          </mat-form-field>
+        <mat-form-field class="input-field" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-hint *ngIf="!passwordInput.value">Enter password</mat-hint>
+        </mat-form-field>
       </form>
-    </div>
+            <span class="login-form-btn" >
+              <button mat-raised-button class="login-button" (submit)="getAdministratorCredentials()">Login</button>
+            </span>
+        </div>
   </div>
 </div>
