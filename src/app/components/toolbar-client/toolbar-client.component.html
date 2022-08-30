@@ -1,0 +1,33 @@
+<div style="height: 9vh;">
+  <mat-toolbar color="primary">
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <span>Admin</span>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a [routerLink]="'/withdraw'" mat-button>Withdraw</a>
+      <a [routerLink]="'/balance'" mat-button>Balance</a>
+      <a class="logout-button" fxFlex (click)="logout()" mat-button color="warn">Logout</a>
+    </div>
+
+    <div fxShow="true" fxHide.gt-sm="true">
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-cont">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+
+        <a mat-list-item [routerLink]="'/withdraw'"> Withdraw </a>
+        <a mat-list-item [routerLink]="'/balance'"> Balance</a>
+        <a mat-list-item (click)="sidenav.toggle()" (click)="logout()"  mat-list-item>Logout</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>

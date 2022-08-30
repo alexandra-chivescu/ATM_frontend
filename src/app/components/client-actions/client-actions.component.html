@@ -1,0 +1,11 @@
+ <app-toolbar-client [clientId]="this.route.snapshot.paramMap.get('clientId')"></app-toolbar-client>
+ <div class="withdraw-functionality">
+   <form class="withdrawForm" [formGroup]="withdrawForm">
+  <mat-form-field class="input-field" appearance="fill">
+    <mat-label>Amount to withdraw</mat-label>
+    <input type="amount" matInput formControlName="amount">
+    <mat-hint *ngIf="!amountInput.value">Enter amount</mat-hint>
+  </mat-form-field>
+</form>
+<button mat-raised-button class="login-button" (click)="withdraw()">Withdraw</button>
+</div>

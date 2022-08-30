@@ -1,0 +1,11 @@
+.mat-drawer-container {
+  position: inherit;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-cont {
+  display: contents;
+}

@@ -1,0 +1,25 @@
+<body class="funds-page">
+<app-toolbar-admin></app-toolbar-admin>
+<div class="funds">
+  <mat-form-field appearance="fill">
+  <mat-label>Select an atm</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let atm of atms" [value]="atm?.location" (onSelectionChange)="updateSelected(atm)" required>
+      {{atm.location}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<hr>
+
+<div *ngFor="let bankNote of bankNotes">
+  Current value
+  <br>
+  <mat-form-field class="field" appearance="fill">
+    <mat-label>Banknote {{bankNote}}</mat-label>
+    <input matInput placeholder="Ex. 100" [(ngModel)] = "selectedAtm?.banknoteFunds[bankNotes.indexOf(bankNote)].amount" >
+  </mat-form-field>
+</div>
+
+<button class="btn-xl" mat-raised-button color="primary" (click)="addFunds()">Add</button>
+</div>
+</body>

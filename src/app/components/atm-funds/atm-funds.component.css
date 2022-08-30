@@ -1,0 +1,13 @@
+funds-page {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+.funds {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+}
+
+.field {
+  margin: 0px;
+}
