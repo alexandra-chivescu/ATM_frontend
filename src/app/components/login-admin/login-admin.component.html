@@ -15,7 +15,7 @@
       <form class="login-form" [formGroup]="signInForm">
            <mat-form-field class="input-field" appearance="fill">
             <mat-label>Username</mat-label>
-            <input type="username" matInput formControlName="username" required>
+            <input type="username" matInput formControlName="username" (keydown)="pressLogin($event)" required>
             <mat-error *ngIf="signInForm.hasError('required')">
               Username is <strong>required</strong>
             </mat-error>
@@ -23,13 +23,13 @@
           </mat-form-field>
         <mat-form-field class="input-field" appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" (keydown)="pressLogin($event)" required>
           <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           <mat-hint *ngIf="!passwordInput.value">Enter password</mat-hint>
         </mat-form-field>
       </form>
             <span class="login-form-btn" >
-              <button mat-raised-button class="login-button" (submit)="getAdministratorCredentials()">Login</button>
+              <button mat-raised-button class="login-button" (click)="login()" >Login</button>
             </span>
         </div>
   </div>

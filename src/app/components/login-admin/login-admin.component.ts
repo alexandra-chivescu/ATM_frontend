@@ -1,8 +1,11 @@
 import {Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AdministratorService} from "../../services/administrator.service";
 import {Administrator} from "../../models/administrator.model";
 import {HttpErrorResponse} from "@angular/common/http";
+import { Router } from '@angular/router';
+import { AuthService } from '../admin-authentication/auth.service';
+import * as shajs from 'sha.js';
 
 @Component({
   selector: 'app-login-admin',
@@ -14,8 +17,18 @@ export class LoginAdminComponent implements OnInit {
   public hide = true;
   public signInForm: FormGroup;
   public administrator:Administrator;
+  public administratorService:AdministratorService
+  public hashPassword: string;
+  public date;
 
-  constructor(private administratorService : AdministratorService) {
+  constructor(
+    private formBuilder : FormBuilder,
+    private router : Router,
+    private authService : AuthService,
+    private adminService:AdministratorService
+
+  ) {
+    this.administratorService = this.adminService;
   }
 
   ngOnInit(): void {
@@ -28,17 +41,35 @@ export class LoginAdminComponent implements OnInit {
   get usernameInput() { return this.signInForm.get('username'); }
   get passwordInput() { return this.signInForm.get('password'); }
 
-  public getAdministratorCredentials() : void {
+  public generateRandomToken() {
+    const rand = Math.random().toString(36).substr(2);
+    return rand + rand;
+  }
 
-    console.log("Username value: " + this.signInForm.controls['username'].value);
-    console.log("Password value: " + this.signInForm.controls['password'].value);
-    this.administratorService.getAdministratorCredentials(this.administrator).subscribe(
-      (response:Administrator) => {
-        this.administrator = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+public login() : void {
+
+  if (this.signInForm.invalid) {
+    return;
+  } else {
+      this.hashPassword = shajs('sha256').update(this.signInForm.controls['password'].value).digest('hex');
+      this.administrator = new Administrator(this.signInForm.controls['username'].value, this.hashPassword);
+
+      this.administratorService.login(this.administrator).subscribe(
+        (response: Administrator) => {
+          this.administrator = response;
+          localStorage.setItem('isLoggedIn', "true");
+          localStorage.setItem('token', this.generateRandomToken());
+          this.router.navigate(['/clients-admin']);
+        },
+        (error: HttpErrorResponse) => {
+          alert("Invalid login credentials.");
+        }
+      );
+    }
+}
+
+  pressLogin(event) {
+    if(event.key === 'Enter')
+      this.login();
   }
 }
