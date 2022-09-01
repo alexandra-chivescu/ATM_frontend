@@ -16,12 +16,18 @@ export class ClientActionsComponent implements OnInit {
   public withdrawForm: FormGroup;
   public balanceAmount: number;
   public clientId: number;
+  public token: string;
 
   constructor(private clientService: ClientService,
               public route: ActivatedRoute,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              private router: Router) { }
 
   ngOnInit(): void {
+    this.token = localStorage.getItem("cardAuthToken");
+    if (this.token === null) {
+      this.router.navigate(['/home']);
+    }
     this.withdrawForm = new FormGroup({
       'amount': new FormControl('', Validators.required )
     });
@@ -32,7 +38,8 @@ export class ClientActionsComponent implements OnInit {
   get amountInput() { return this.withdrawForm.get('amount'); }
 
   public withdraw() {
-    this.clientService.withdraw(this.withdrawForm.get('amount').value, this.route.snapshot.paramMap.get('token'), this.clientId)
+    console.log('fac withdraw cu ID: ', this.clientId);
+    this.clientService.withdraw(this.withdrawForm.get('amount').value, this.token, this.clientId)
       .subscribe(value => {
         //console.log(value);
         this.balance();

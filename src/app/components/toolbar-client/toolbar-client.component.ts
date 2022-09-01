@@ -20,10 +20,13 @@ export class ToolbarClientComponent implements OnInit {
   }
 
   public logout() {
+    console.log('Fac logout cu ID', this.clientId);
     this.clientService.logout(Number.parseInt(this.clientId))
-      .subscribe(value => console.log(value));
-    this.router.navigate(['/home']);
-
+      .subscribe(value => {
+        console.log(value)
+        localStorage.removeItem("cardAuthToken");
+        this.router.navigate(['/home']);
+      });
   }
 
 }

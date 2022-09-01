@@ -35,11 +35,12 @@ export class CardAuthComponent implements OnInit {
     var cvv = this.signInForm.get("cvv").value;
     var pin = this.signInForm.get("pin").value;
     this.clientService.clientAuth(cardNumber, cvv, pin)
-      .subscribe(clientId => {
-        this.router.navigate(['/client-actions', clientId]);
+      .subscribe(clientAuthDto => {
+        localStorage.setItem("cardAuthToken", clientAuthDto.token);
+        this.router.navigate(['/client-actions', {"id" : clientAuthDto.id}]);
       },
       (error: HttpErrorResponse) => {
-        alert("Invalid card data.");
+        alert("Invalid card data. Please try again.");
       })
   }
 
