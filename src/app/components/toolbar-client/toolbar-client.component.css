@@ -2,10 +2,14 @@
   position: inherit;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
 .sidenav-cont {
   display: contents;
+}
+
+.toolbar {
+  height: 9vh;
+}
+
+.logout-button {
+  flex: 0 0 0% !important;
 }

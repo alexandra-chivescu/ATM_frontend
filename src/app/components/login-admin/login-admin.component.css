@@ -26,6 +26,11 @@
   height: 100%;
 }
 
+.home-button {
+  margin-left: 0px;
+  z-index: 1;
+}
+
 .login-img {
   display: block;
   line-height: 1.2;

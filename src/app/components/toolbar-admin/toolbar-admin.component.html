@@ -1,15 +1,19 @@
-<div style="height: 9vh;">
+<div class="toolbar">
   <mat-toolbar color="primary">
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
     <span>Admin</span>
     <span class="example-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true">
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-      <a [routerLink]="'/clients-admin'" mat-button>All Clients</a>
-      <a [routerLink]="'/atm-funds'" mat-button>Funds</a>
-      <a class="logout-button" fxFlex (click)="logout()" mat-button color="warn">Logout</a>
+    <div fxShow="true" fxHide.lt-md="true" fxFlex fxLayout>
+      <div fxFlex>
+        <a [routerLink]="'/clients-admin'" mat-button>All Clients</a>
+        <a [routerLink]="'/atm-funds'" mat-button>Funds</a>
+      </div>
+
+      <div fxFlex fxLayoutAlign="flex-end">
+        <a class="logout-button" fxFlex (click)="logout()" mat-button color="warn">Logout</a>
+      </div>
     </div>
 
     <div fxShow="true" fxHide.gt-sm="true">
@@ -27,7 +31,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 

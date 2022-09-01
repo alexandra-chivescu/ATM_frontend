@@ -9,13 +9,7 @@ import {AuthService} from "../admin-authentication/auth.service";
 })
 export class HomeComponent implements OnInit {
 
-  innerHeight: any;
-  innerWidth: any;
-
   constructor() {
-    this.innerHeight = "100%";
-    this.innerWidth = "100%";
-    console.log("Height" + this.innerHeight + " Width: " + this.innerWidth);
   }
 
   ngOnInit() {
