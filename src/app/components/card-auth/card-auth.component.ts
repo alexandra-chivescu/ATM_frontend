@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ClientService} from "../../services/client.service";
 import {MatDialog} from "@angular/material/dialog";
-import {CardAuthSuccessDialogComponent} from "../card-auth-success-dialog/card-auth-success-dialog.component";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-card-auth',
@@ -35,22 +35,24 @@ export class CardAuthComponent implements OnInit {
     var cvv = this.signInForm.get("cvv").value;
     var pin = this.signInForm.get("pin").value;
     this.clientService.clientAuth(cardNumber, cvv, pin)
-      .subscribe(value => {
-        console.log(value);
-        this.router.navigate(['/client-actions', value]);
+      .subscribe(clientId => {
+        this.router.navigate(['/client-actions', clientId]);
+      },
+      (error: HttpErrorResponse) => {
+        alert("Invalid card data.");
       })
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CardAuthSuccessDialogComponent, {
-      width: '600px',
-      height: '600px',
-      data: {amount: 0}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-
-    });
-  }
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(CardAuthSuccessDialogComponent, {
+  //     width: '600px',
+  //     height: '600px',
+  //     data: {amount: 0}
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed', result);
+  //
+  //   });
+  // }
 }

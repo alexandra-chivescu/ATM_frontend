@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Client} from "../../models/client.model";
 import {ClientService} from "../../services/client.service";
 import {HttpErrorResponse} from "@angular/common/http";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-clients-admin',
@@ -12,7 +11,6 @@ import {Observable} from "rxjs";
 export class ClientsAdminComponent implements OnInit {
 
  public clients: Client[];
- public allClients: Observable<Client[]>
  public client: Client;
  gridColumns: number;
 
@@ -34,10 +32,6 @@ export class ClientsAdminComponent implements OnInit {
         alert(error.message);
       }
     );
-  }
-
-  public getAllClients() {
-   this.allClients = this.clientService.getClients();
   }
 
   public deleteClient(id: number) {

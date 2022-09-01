@@ -4,10 +4,17 @@ funds-page {
 }
 .funds {
   position: fixed;
-  top: 20%;
-  left: 50%;
+  top: 30%;
+  left: 30%;
 }
 
 .field {
   margin: 0px;
 }
+
+.grid-size {
+  width: 600px;
+}
+
+
+

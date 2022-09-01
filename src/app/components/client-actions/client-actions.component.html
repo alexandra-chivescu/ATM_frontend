@@ -1,4 +1,7 @@
  <app-toolbar-client [clientId]="this.route.snapshot.paramMap.get('clientId')"></app-toolbar-client>
+ <mat-card class="balance-card">
+   <p class="balance-display">Your current balance: <b> {{balanceAmount}} RON</b></p>
+ </mat-card>
  <div class="withdraw-functionality">
    <form class="withdrawForm" [formGroup]="withdrawForm">
   <mat-form-field class="input-field" appearance="fill">

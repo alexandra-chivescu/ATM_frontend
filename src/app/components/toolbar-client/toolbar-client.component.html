@@ -1,14 +1,19 @@
-<div style="height: 9vh;">
+<div class="toolbar">
   <mat-toolbar color="primary">
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
     </button>
     <span>Admin</span>
     <span class="example-spacer"></span>
-    <div fxShow="true" fxHide.lt-md="true">
-      <a [routerLink]="'/withdraw'" mat-button>Withdraw</a>
-      <a [routerLink]="'/balance'" mat-button>Balance</a>
-      <a class="logout-button" fxFlex (click)="logout()" mat-button color="warn">Logout</a>
+    <div fxShow="true" fxHide.lt-md="true" fxFlex fxLayout>
+      <div fxFlex>
+        <a [routerLink]="'/withdraw'" mat-button>Withdraw</a>
+        <a [routerLink]="'/deposit'" mat-button>Deposit</a>
+        <a [routerLink]="'/transfer'" mat-button>Transfer</a>
+      </div>
+      <div fxFlex fxLayoutAlign="flex-end">
+        <a class="logout-button" fxFlex (click)="logout()" mat-button color="warn">Logout</a>
+      </div>
     </div>
 
     <div fxShow="true" fxHide.gt-sm="true">
@@ -20,8 +25,9 @@
       <mat-nav-list>
 
         <a mat-list-item [routerLink]="'/withdraw'"> Withdraw </a>
-        <a mat-list-item [routerLink]="'/balance'"> Balance</a>
-        <a mat-list-item (click)="sidenav.toggle()" (click)="logout()"  mat-list-item>Logout</a>
+        <a mat-list-item [routerLink]="'/deposit'">Deposit</a>
+        <a mat-list-item [routerLink]="'/transfer'">Transfer</a>
+        <a mat-list-item (click)="sidenav.toggle()" (click)="logout()" mat-list-item>Logout</a>
 
       </mat-nav-list>
     </mat-sidenav>
