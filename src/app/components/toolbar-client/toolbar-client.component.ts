@@ -20,7 +20,6 @@ export class ToolbarClientComponent implements OnInit {
   }
 
   public logout() {
-    console.log('Fac logout cu ID', this.clientId);
     this.clientService.logout(Number.parseInt(this.clientId))
       .subscribe(value => {
         console.log(value)
