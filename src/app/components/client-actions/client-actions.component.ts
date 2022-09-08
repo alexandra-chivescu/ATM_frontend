@@ -57,7 +57,6 @@ export class ClientActionsComponent implements OnInit, OnDestroy {
         this.banknotes = response;
         Object.keys(response.banknotes)
           .forEach(key => this.map.set(key, response.banknotes[key]));
-         //this.snackBar.open("Withdraw performed successfully: " + this.withdrawForm.get('amount').value + " RON" , "OK",  { duration: 2500 })
          this.openDialog();
       })
 

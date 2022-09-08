@@ -37,3 +37,8 @@
   height: 50px;
   width: 50px;
 }
+
+.add-client-button {
+  margin: 25px;
+  padding: 0.5rem;
+}

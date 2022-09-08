@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {Client} from "../models/client.model";
 import {Atm} from "../models/atm.model";
 import {BanknoteFund} from "../models/banknoteFund.model";
+import {ClientDto} from "../models/clientDto.model";
+import {NewClientDto} from "../models/newClientDto.model";
 
 @Injectable({providedIn: 'root'})
 export class AdministratorService {
@@ -22,6 +24,10 @@ export class AdministratorService {
 
   public addFunds(atm: Atm) : Observable<BanknoteFund[]> {
     return this.http.patch<BanknoteFund[]>('/atms/funds', atm);
+  }
+
+  public addClient(firstName : string, lastName : string, email: string, bankName : string , pin : string, cvv : string) : Observable<any> {
+    return this.http.post<any> ('/admin/clients', new NewClientDto(firstName, lastName, email, bankName, pin, cvv));
   }
 
 

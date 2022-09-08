@@ -1,11 +1,11 @@
 <app-toolbar-admin></app-toolbar-admin>
 <p class="cards-per-row-txt"><b>Select number of cards per row:</b> </p>
 <mat-slider class="img-size-slider" [max]="6" [min]="3" [(ngModel)]="gridColumns" [thumbLabel]="true"></mat-slider>
-
-
+<br>
+<button (click)="openDialog()" mat-raised-button color="primary" class="add-client-button">Add New Client</button>
 <div class="content">
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlexAlign="stretch" *ngFor = "let client of clients; let idx_client = index">
+    <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" fxFlexAlign="stretch" *ngFor = "let client of clients">
     <mat-card class="client-card">
       <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
@@ -32,11 +32,11 @@
         </mat-list>
       </mat-card-content>
       <mat-card-actions>
-        <button (click)="deleteClient(client.id)" class="action-buttton" mat-fab color="primary"><mat-icon>delete</mat-icon></button>
+        <button (click)="deleteClient(client.id)" class="action-buttton" mat-fab color="warn"><mat-icon>delete</mat-icon></button>
       </mat-card-actions>
     </mat-card>
     </div>
   </div>
+ </div>
 
-</div>
 

@@ -30,6 +30,7 @@ import { WithdrawSuccessDialogComponent } from './components/withdraw-success-di
 import {MatDialogModule} from "@angular/material/dialog";
 import { ClientActionsComponent } from './components/client-actions/client-actions.component';
 import { ToolbarClientComponent } from './components/toolbar-client/toolbar-client.component';
+import { AddClientDialogComponent } from './components/add-client-dialog/add-client-dialog.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     CardAuthComponent,
     WithdrawSuccessDialogComponent,
     ClientActionsComponent,
-    ToolbarClientComponent
+    ToolbarClientComponent,
+    AddClientDialogComponent
   ],
   imports: [
     BrowserModule,
