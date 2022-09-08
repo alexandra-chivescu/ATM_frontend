@@ -24,12 +24,11 @@ export class ClientsAdminComponent implements OnInit {
 
   public getClients() : void {
     this.clientService.getClients().subscribe
-    (
-      (response: Client[]) => {
-        this.clients = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+    ( {
+      next: (response: Client[]) =>
+        this.clients = response,
+      error: (error) =>
+        alert(error.message)
       }
     );
   }
@@ -37,12 +36,12 @@ export class ClientsAdminComponent implements OnInit {
   public deleteClient(id: number) {
       this.clientService.deleteClient(id).subscribe
       (
-        client => {
-          this.clients = this.clients.filter(client => client.id != id);
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
+        {
+          next: _ =>
+            this.clients = this.clients.filter(client => client.id != id),
+          error: (error: HttpErrorResponse) => {
+            alert(error.message);
+        } }
       );
 
     };

@@ -2,7 +2,6 @@ import {Component, OnInit } from '@angular/core';
 import {FormControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AdministratorService} from "../../services/administrator.service";
 import {Administrator} from "../../models/administrator.model";
-import {HttpErrorResponse} from "@angular/common/http";
 import { Router } from '@angular/router';
 import { AuthService } from '../admin-authentication/auth.service';
 import * as shajs from 'sha.js';
@@ -42,7 +41,7 @@ export class LoginAdminComponent implements OnInit {
   get passwordInput() { return this.signInForm.get('password'); }
 
   public generateRandomToken() {
-    const rand = Math.random().toString(36).substr(2);
+    const rand = Math.random().toString(36).substring(2);
     return rand + rand;
   }
 
@@ -54,17 +53,15 @@ public login() : void {
       this.hashPassword = shajs('sha256').update(this.signInForm.controls['password'].value).digest('hex');
       this.administrator = new Administrator(this.signInForm.controls['username'].value, this.hashPassword);
 
-      this.administratorService.login(this.administrator).subscribe(
-        (response: Administrator) => {
+      this.administratorService.login(this.administrator).subscribe( {
+        next: (response: Administrator) => {
           this.administrator = response;
           localStorage.setItem('isLoggedIn', "true");
           localStorage.setItem('token', this.generateRandomToken());
           this.router.navigate(['/clients-admin']);
         },
-        (error: HttpErrorResponse) => {
-          alert("Invalid login credentials.");
-        }
-      );
+        error : () => alert("Invalid login credentials.")
+    });
     }
 }
 

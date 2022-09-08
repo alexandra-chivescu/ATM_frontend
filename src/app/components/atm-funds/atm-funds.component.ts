@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Atm} from "../../models/atm.model";
-import {Client} from "../../models/client.model";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AdministratorService} from "../../services/administrator.service";
 import {Banknote} from "../../models/banknote.model";
@@ -17,7 +16,6 @@ export class AtmFundsComponent implements OnInit {
   public atms: Atm[];
   public selectedAtm: Atm;
   public bankNotes: (string | Banknote)[];
-  public banknoteFunds: BanknoteFund;
   constructor( private administratorService: AdministratorService,
                private snackBar: MatSnackBar) { }
 
@@ -30,26 +28,26 @@ export class AtmFundsComponent implements OnInit {
 
   public getAtms() : void {
     this.administratorService.getAtms().subscribe
-    (
-      (response: Atm[]) => {
-        this.atms = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    ({
+      next:
+        (response: Atm[]) =>
+          this.atms = response,
+      error: (error) =>
+        alert(error.message)
+    });
   }
 
   public addFunds() : void {
     this.administratorService.addFunds(this.selectedAtm).subscribe
-    (
-      (response: BanknoteFund[]) => {
-        this.selectedAtm.banknoteFunds = response;
-        console.log(this.selectedAtm.banknoteFunds);
-        this.snackBar.open('Funds were added successfully' , "OK",  { duration: 2500 })
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
+    ( {
+      next:
+        (response: BanknoteFund[]) => {
+          this.selectedAtm.banknoteFunds = response
+          //console.log(this.selectedAtm.banknoteFunds);
+          this.snackBar.open('Funds were added successfully', "OK", {duration: 2500})
+        },
+      error: (error: HttpErrorResponse) =>
+        alert(error.message)
       }
     );
   }

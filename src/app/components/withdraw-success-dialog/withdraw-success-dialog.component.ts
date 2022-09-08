@@ -1,5 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-withdraw-success-dialog',
@@ -8,8 +7,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class WithdrawSuccessDialogComponent implements OnInit {
   public map: Map<string, number>;
-  constructor(
-    public dialogRef: MatDialogRef<WithdrawSuccessDialogComponent>) {}
+  constructor() {}
 
   ngOnInit(): void {
   }
