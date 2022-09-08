@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Client} from "../models/client.model";
 import {ClientAuthDto} from "../models/clientAuthDto.model";
 import {ClientDto} from "../models/clientDto.model";
+import {WithdrawDto} from "../models/withdrawDto.model";
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
@@ -23,8 +24,8 @@ export class ClientService {
     return this.http.post<ClientAuthDto>('/atms/clients/login', new ClientAuthDto(cardNumber, cvv, pin))
   }
 
-  public withdraw(amount: number, token: string, clientId: number) : Observable<ClientAuthDto> {
-    return this.http.patch<ClientAuthDto>('/atms/withdraw', new ClientDto(amount, token, clientId));
+  public withdraw(amount: number, token: string, clientId: number) : Observable<WithdrawDto> {
+    return this.http.patch<WithdrawDto>('/atms/withdraw', new ClientDto(amount, token, clientId));
   }
 
   public logout(clientId: number) : Observable<any> {
@@ -33,6 +34,10 @@ export class ClientService {
 
   public balance(clientId: number) : Observable<number> {
     return this.http.get<number>('atms/balance/' + clientId);
+  }
+
+  public deposit(amountToDeposit: number, token: string, clientId: number) : Observable<ClientAuthDto> {
+    return this.http.patch<ClientAuthDto>('/atms/deposit', new ClientDto(amountToDeposit, token, clientId));
   }
 
 }

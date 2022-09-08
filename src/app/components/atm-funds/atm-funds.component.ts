@@ -33,7 +33,6 @@ export class AtmFundsComponent implements OnInit {
     (
       (response: Atm[]) => {
         this.atms = response;
-        // this.selectedAtm = this.atms[0];
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -47,7 +46,7 @@ export class AtmFundsComponent implements OnInit {
       (response: BanknoteFund[]) => {
         this.selectedAtm.banknoteFunds = response;
         console.log(this.selectedAtm.banknoteFunds);
-        this.snackBar.open('Funds were added successfully')
+        this.snackBar.open('Funds were added successfully' , "OK",  { duration: 2500 })
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

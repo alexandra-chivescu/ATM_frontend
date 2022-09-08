@@ -45,7 +45,7 @@ export class CardAuthComponent implements OnInit {
   }
 
   // openDialog(): void {
-  //   const dialogRef = this.dialog.open(CardAuthSuccessDialogComponent, {
+  //   const dialogRef = this.dialog.open(WithdrawSuccessDialogComponent, {
   //     width: '600px',
   //     height: '600px',
   //     data: {amount: 0}

@@ -26,7 +26,7 @@ import {AuthGuard} from './components/admin-authentication/auth.guard';
 import {AtmFundsComponent} from './components/atm-funds/atm-funds.component';
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import { CardAuthComponent } from './components/card-auth/card-auth.component';
-import { CardAuthSuccessDialogComponent } from './components/card-auth-success-dialog/card-auth-success-dialog.component';
+import { WithdrawSuccessDialogComponent } from './components/withdraw-success-dialog/withdraw-success-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import { ClientActionsComponent } from './components/client-actions/client-actions.component';
 import { ToolbarClientComponent } from './components/toolbar-client/toolbar-client.component';
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     ToolbarAdminComponent,
     AtmFundsComponent,
     CardAuthComponent,
-    CardAuthSuccessDialogComponent,
+    WithdrawSuccessDialogComponent,
     ClientActionsComponent,
     ToolbarClientComponent
   ],

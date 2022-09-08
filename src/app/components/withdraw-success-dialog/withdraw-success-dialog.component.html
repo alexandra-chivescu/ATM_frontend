@@ -1,0 +1,17 @@
+<mat-card class="message-card">
+  <h3 mat-dialog-title>Withdraw from ATM Succeded</h3>
+</mat-card>
+<br>
+<div mat-dialog-content>
+  <p><b>You will receive the following banknotes:</b></p>
+  <mat-form-field>
+    <ul>
+      <li *ngFor="let recipient of map | keyvalue">
+        <b> {{recipient.key}} </b> ---> {{recipient.value}}
+      </li>
+    </ul>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="map" cdkFocusInitial>Ok</button>
+</div>

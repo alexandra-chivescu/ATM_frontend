@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardAuthSuccessDialogComponent } from './card-auth-success-dialog.component';
+import { WithdrawSuccessDialogComponent } from './withdraw-success-dialog.component';
 
 describe('CardAuthSuccessDialogComponent', () => {
-  let component: CardAuthSuccessDialogComponent;
-  let fixture: ComponentFixture<CardAuthSuccessDialogComponent>;
+  let component: WithdrawSuccessDialogComponent;
+  let fixture: ComponentFixture<WithdrawSuccessDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardAuthSuccessDialogComponent ]
+      declarations: [ WithdrawSuccessDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CardAuthSuccessDialogComponent);
+    fixture = TestBed.createComponent(WithdrawSuccessDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

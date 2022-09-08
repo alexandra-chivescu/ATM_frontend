@@ -1,14 +1,27 @@
- <app-toolbar-client [clientId]="this.route.snapshot.paramMap.get('id')"></app-toolbar-client>
- <mat-card class="balance-card">
-   <p class="balance-display">Your current balance: <b> {{balanceAmount}} RON</b></p>
- </mat-card>
- <div class="withdraw-functionality">
-   <form class="withdrawForm" [formGroup]="withdrawForm">
-  <mat-form-field class="input-field" appearance="fill">
-    <mat-label>Amount to withdraw</mat-label>
-    <input type="amount" matInput formControlName="amount">
-    <mat-hint *ngIf="!amountInput.value">Enter amount</mat-hint>
-  </mat-form-field>
-</form>
-<button mat-raised-button class="login-button" (click)="withdraw()">Withdraw</button>
+<app-toolbar-client [clientId]="this.route.snapshot.paramMap.get('id')"></app-toolbar-client>
+<mat-card class="balance-card">
+  <p class="balance-display">Your current balance: <b> {{balanceAmount}} RON</b></p>
+</mat-card>
+<div class="withdraw-functionality">
+  <form class="withdrawForm" [formGroup]="withdrawForm">
+    <mat-form-field class="input-field" appearance="fill">
+      <mat-label>Amount to withdraw</mat-label>
+      <input type="amount" matInput formControlName="amount">
+      <mat-hint *ngIf="!amountInput.value">Enter amount</mat-hint>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button class="login-button" color="primary" (click)="withdraw()">Withdraw</button>
 </div>
+<br>
+
+<div class="deposit-functionality">
+  <form class="depositForm" [formGroup]="depositForm">
+    <mat-form-field class="input-field" appearance="fill">
+      <mat-label>Amount to deposit</mat-label>
+      <input type="amountToDeposit" matInput formControlName="amountToDeposit">
+      <mat-hint *ngIf="!amountToDepositInput.value">Enter amount</mat-hint>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button class="login-button" color="primary" (click)="deposit()">Deposit</button>
+
+  </div>
