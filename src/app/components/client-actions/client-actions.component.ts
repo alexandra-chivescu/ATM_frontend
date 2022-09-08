@@ -84,7 +84,7 @@ export class ClientActionsComponent implements OnInit, OnDestroy {
   openDialog(): void {
     const dialogRef = this.dialog.open(WithdrawSuccessDialogComponent, {
       width: '500px',
-      height: '430px'
+      height: '500px'
     });
     dialogRef.componentInstance.map = this.map;
 

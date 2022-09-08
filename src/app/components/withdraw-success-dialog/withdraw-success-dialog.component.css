@@ -4,3 +4,16 @@
   max-width: 350px;
   background-color: darkseagreen;
 }
+
+.wthdraw-succeded-title {
+  display: block;
+  font-family: Montserrat-SemiBold;
+  margin-bottom: 20px;
+  font-size: 38px;
+  color: #005986;
+  line-height: 1.2;
+  text-align: center;
+}
+.wthdraw-succeded-title i {
+  font-size: 60px;
+}
