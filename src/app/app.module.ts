@@ -24,14 +24,14 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {AuthGuard} from './components/admin-authentication/auth.guard';
 import {AtmFundsComponent} from './components/atm-funds/atm-funds.component';
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
-import { CardAuthComponent } from './components/card-auth/card-auth.component';
-import { WithdrawSuccessDialogComponent } from './components/withdraw-success-dialog/withdraw-success-dialog.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {CardAuthComponent } from './components/card-auth/card-auth.component';
+import {WithdrawSuccessDialogComponent } from './components/withdraw-success-dialog/withdraw-success-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { ClientActionsComponent } from './components/client-actions/client-actions.component';
-import { ToolbarClientComponent } from './components/toolbar-client/toolbar-client.component';
-import { AddClientDialogComponent } from './components/add-client-dialog/add-client-dialog.component';
-import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import {ClientActionsComponent } from './components/client-actions/client-actions.component';
+import {ToolbarClientComponent } from './components/toolbar-client/toolbar-client.component';
+import {AddClientDialogComponent } from './components/add-client-dialog/add-client-dialog.component';
+import {NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
