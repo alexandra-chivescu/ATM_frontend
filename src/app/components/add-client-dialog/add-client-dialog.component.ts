@@ -5,6 +5,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {DialogRef} from "@angular/cdk/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {NewClientDto} from "../../models/newClientDto.model";
 
 @Component({
   selector: 'app-add-client-dialog',
@@ -14,6 +15,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class AddClientDialogComponent implements OnInit {
 
   public saveNewClientForm: FormGroup;
+  public newClient : NewClientDto = new NewClientDto();
   constructor(private administratorService : AdministratorService,
               private dialogRef : DialogRef,
               private snackBar: MatSnackBar) { }
@@ -38,14 +40,14 @@ export class AddClientDialogComponent implements OnInit {
   }
 
   addClient() {
-    var firstName = this.saveNewClientForm.get("firstName").value;
-    var lastName = this.saveNewClientForm.get("lastName").value;
-    var email = this.saveNewClientForm.get("email").value;
-    var bankName = this.saveNewClientForm.get("bankName").value;
-    var pin = this.saveNewClientForm.get("pin").value;
-    var cvv = this.saveNewClientForm.get("cvv").value;
+    this.newClient.firstName = this.saveNewClientForm.get("firstName").value;
+    this.newClient.lastName = this.saveNewClientForm.get("lastName").value;
+    this.newClient.email = this.saveNewClientForm.get("email").value;
+    this.newClient.bankName = this.saveNewClientForm.get("bankName").value;
+    this.newClient.pin = this.saveNewClientForm.get("pin").value;
+    this.newClient.cvv = this.saveNewClientForm.get("cvv").value;
 
-    this.administratorService.addClient(firstName, lastName, email, bankName, pin, cvv)
+    this.administratorService.addClient(this.newClient)
       .subscribe(
         {
           next: _ => {

@@ -6,8 +6,7 @@ export class NewClientDto {
   public pin : string;
   public cvv : string;
 
-
-  constructor(firstName: string, lastName: string, email: string, bankName: string, pin: string, cvv: string) {
+  constructor(firstName?: string, lastName?: string, email?: string, bankName?: string, pin?: string, cvv?: string) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -15,4 +14,5 @@ export class NewClientDto {
     this.pin = pin;
     this.cvv = cvv;
   }
+
 }

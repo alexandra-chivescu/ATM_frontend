@@ -31,15 +31,18 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ClientActionsComponent } from './components/client-actions/client-actions.component';
 import { ToolbarClientComponent } from './components/toolbar-client/toolbar-client.component';
 import { AddClientDialogComponent } from './components/add-client-dialog/add-client-dialog.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login-admin', component: LoginAdminComponent},
   {path: 'clients-admin', component: ClientsAdminComponent, canActivate: [AuthGuard]},
-  {path: 'card-auth', component: CardAuthComponent},
   {path: 'atm-funds', component: AtmFundsComponent},
-  {path: 'client-actions', component: ClientActionsComponent}];
+  {path: 'card-auth', component: CardAuthComponent},
+  {path: 'client-actions', component: ClientActionsComponent},
+  {path: '404', component: NotFoundPageComponent},
+  {path: '**', redirectTo: '/404'}];
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
     WithdrawSuccessDialogComponent,
     ClientActionsComponent,
     ToolbarClientComponent,
-    AddClientDialogComponent
+    AddClientDialogComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
