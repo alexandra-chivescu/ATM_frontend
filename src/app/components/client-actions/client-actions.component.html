@@ -6,7 +6,7 @@
   <form class="withdrawForm" [formGroup]="withdrawForm">
     <mat-form-field class="input-field" appearance="fill">
       <mat-label>Amount to withdraw</mat-label>
-      <input type="amount" matInput formControlName="amount">
+      <input type="number" matInput formControlName="amount">
       <mat-hint *ngIf="!amountInput.value">Enter amount</mat-hint>
     </mat-form-field>
   </form>
@@ -18,10 +18,9 @@
   <form class="depositForm" [formGroup]="depositForm">
     <mat-form-field class="input-field" appearance="fill">
       <mat-label>Amount to deposit</mat-label>
-      <input type="amountToDeposit" matInput formControlName="amountToDeposit">
+      <input type="number" matInput formControlName="amountToDeposit">
       <mat-hint *ngIf="!amountToDepositInput.value">Enter amount</mat-hint>
     </mat-form-field>
   </form>
   <button mat-raised-button class="login-button" color="primary" (click)="deposit()">Deposit</button>
-
-  </div>
+</div>

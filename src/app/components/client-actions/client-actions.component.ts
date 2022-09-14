@@ -24,6 +24,7 @@ export class ClientActionsComponent implements OnInit, OnDestroy {
   public token: string;
   public banknotes: WithdrawDto;
   public map: Map<string, number> = new Map<string, number>();
+  public errors: any;
 
   constructor(private clientService: ClientService,
               public route: ActivatedRoute,
@@ -50,16 +51,21 @@ export class ClientActionsComponent implements OnInit, OnDestroy {
   get amountToDepositInput() { return this.depositForm.get('amountToDeposit');}
 
   public withdraw() {
+    this.errors = null;
     this.clientService.withdraw(this.withdrawForm.get('amount').value, this.token, this.clientId)
       .pipe(takeUntil(this.notifier))
-      .subscribe((response: WithdrawDto)=> {
+      .subscribe( {
+        next: (response:WithdrawDto)=> {
         this.balance();
         this.banknotes = response;
         Object.keys(response.banknotes)
           .forEach(key => this.map.set(key, response.banknotes[key]));
-         this.openDialog();
+         this.openDialog() },
+        error: (error) => {
+          this.errors = error;
+          alert(this.errors.error.message);
+        }
       })
-
   }
 
   public balance() {
